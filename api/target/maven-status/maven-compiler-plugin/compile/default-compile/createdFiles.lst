@@ -1,0 +1,16 @@
+org/openmrs/module/relationshipmapping/api/db/MasterCardRecordDao.class
+org/openmrs/module/relationshipmapping/api/service/impl/MasterCardRecordServiceImpl$1.class
+org/openmrs/module/relationshipmapping/api/db/hibernate/HibernateMasterCardRecordMappingLogDao.class
+org/openmrs/module/relationshipmapping/model/MasterCardObsGroup.class
+org/openmrs/module/relationshipmapping/api/db/hibernate/HibernateMasterCardRecordDao.class
+org/openmrs/module/relationshipmapping/model/MasterCardRecordMappingExecutionCycle.class
+org/openmrs/module/relationshipmapping/api/db/MasterCardRecordMappingLogDao.class
+org/openmrs/module/relationshipmapping/RelationshipMappingModuleActivator.class
+org/openmrs/module/relationshipmapping/task/RelationshipMapper.class
+org/openmrs/module/relationshipmapping/api/service/impl/MasterCardRecordServiceImpl.class
+org/openmrs/module/relationshipmapping/model/MasterCardRecord.class
+org/openmrs/module/relationshipmapping/task/RelationshipMappingTask.class
+org/openmrs/module/relationshipmapping/handler/MastercardCustomPayloadHandler.class
+org/openmrs/module/relationshipmapping/api/service/MasterCardRecordService.class
+org/openmrs/module/relationshipmapping/model/MasterCardRecordMappingLog.class
+org/openmrs/module/relationshipmapping/model/MasterCardObsGroupMember.class

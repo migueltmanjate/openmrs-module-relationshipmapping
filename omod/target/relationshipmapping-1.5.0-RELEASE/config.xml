@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+	
+	<!-- Base Module Properties -->
+	<id>relationshipmapping</id>
+	<name>Relationship Mapping</name>
+	<version>1.5.0-RELEASE</version>
+	<package>org.openmrs.module.relationshipmapping</package>
+	<author>mUzima Team</author>
+	<description>
+			
+	</description>
+
+	<activator>org.openmrs.module.relationshipmapping.RelationshipMappingModuleActivator</activator>
+
+	<updateURL>https://modules.openmrs.org/modules/download/relationshipmapping/update.rdf</updateURL>
+	<!-- /Base Module Properties -->
+
+	<require_version>2.1.2</require_version>
+
+	<aware_of_modules>
+		<aware_of_module version="1.0">org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+
+
+    <!-- Required Modules -->
+    <require_modules>
+        <require_module version="2.3.0">org.openmrs.module.muzimacore</require_module>
+    </require_modules>
+    <!-- / Required Modules -->
+	<!-- Extensions -->
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.relationshipmapping.extension.html.AdminList</class>
+	</extension>
+
+	<mappingFiles>
+		MasterCardRecordMappingLog.hbm.xml
+		MasterCardRecordMappingExecutionCycle.hbm.xml
+	</mappingFiles>
+
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+	
+</module>
+

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="org.openmrs.module.relationshipmapping.model">
+    <class name="org.openmrs.module.relationshipmapping.model.MasterCardRecordMappingLog"
+           table="mastercard_relationship_mapping_log">
+        <id name="id" type="java.lang.Integer" column="id" unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <property name="hivCareObsId" type="java.lang.Integer">
+            <column name="hiv_care_obs" />
+        </property>
+        <property name="hivTestObsId" type="java.lang.Integer">
+            <column name="hiv_test_obs" />
+        </property>
+        <property name="childAtRiskTreatmentObsId" type="java.lang.Integer">
+            <column name="child_at_risk_treatment_obs" />
+        </property>
+        <property name="contactNidObsId" type="java.lang.Integer">
+            <column name="contact_nid_obs" />
+        </property>
+        <property name="contactAgeObsId" type="java.lang.Integer">
+            <column name="contact_age_obs" />
+        </property>
+        <property name="contactNameObsId" type="java.lang.Integer">
+            <column name="contact_name_obs" />
+        </property>
+        <property name="relationshipObsId" type="java.lang.Integer">
+            <column name="relationship_obs" />
+        </property>
+        <many-to-one name="contactPerson" class="org.openmrs.Person" not-null="true">
+            <column name="contact_person"/>
+        </many-to-one>
+        <many-to-one name="indexPatient" class="org.openmrs.Patient" not-null="true">
+            <column name="index_patient"/>
+        </many-to-one>
+        <property name="contactPersonWasCreated" type="java.lang.Boolean" column="contact_person_was_created"/>
+        <property name="personObsWasCreated" type="java.lang.Boolean" column="person_obs_was_created"/>
+        <many-to-one name="relationship" class="org.openmrs.Relationship" not-null="true">
+            <column name="relationship"/>
+        </many-to-one>
+        <many-to-one name="executionCycle" class="org.openmrs.module.relationshipmapping.model.MasterCardRecordMappingExecutionCycle" not-null="true">
+            <column name="execution_cycle"/>
+        </many-to-one>
+
+        <many-to-one name="creator" class="org.openmrs.User" not-null="true">
+            <column name="creator"/>
+        </many-to-one>
+        <property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19"/>
+
+        <many-to-one name="changedBy" class="org.openmrs.User" column="changed_by"/>
+        <property name="dateChanged" type="java.util.Date" column="date_changed" length="19"/>
+
+        <many-to-one name="voidedBy" class="org.openmrs.User" column="voided_by"/>
+        <property name="dateVoided" type="java.util.Date" column="date_voided" length="19"/>
+        <property name="voidReason" type="java.lang.String" column="void_reason" length="255"/>
+        <property name="voided" type="boolean" column="voided" length="1" not-null="true"/>
+
+        <property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true"/>
+    </class>
+</hibernate-mapping>

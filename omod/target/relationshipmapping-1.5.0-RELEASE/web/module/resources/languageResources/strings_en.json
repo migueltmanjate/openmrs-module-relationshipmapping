@@ -1,0 +1,16 @@
+{
+  "pagination_first": "First",
+  "pagination_next": "Next",
+  "pagination_previous": "Previous",
+  "pagination_last": "Last",
+  "query_date_time": "Query end Date/Time",
+  "relationships_created": "Relationships created",
+  "persons_created": "Persons created",
+  "obs_created": "Obs created",
+  "persons_for_obs_created": "Persons for Obs created",
+  "index_cases_involved": "Index cases involved",
+  "general_run_now": "Run now",
+  "general_refresh": "Refresh",
+  "mapping_service_was_running": "Could not initiate the task to map mastercard records since another task was found running",
+  "title_mapping_history": "Mastercard to relationships mapping history"
+}

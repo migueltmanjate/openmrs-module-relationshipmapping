@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="org.openmrs.module.relationshipmapping.model">
+    <class name="org.openmrs.module.relationshipmapping.model.MasterCardRecordMappingExecutionCycle"
+           table="mastercard_relationship_mapping_cycle">
+        <id name="id" type="java.lang.Integer" column="id" unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <property name="queryEndTime" type="java.util.Date"
+                  column="query_end_time" not-null="true" length="19"/>
+        <property name="latestRecordCreationDate" type="java.util.Date"
+                  column="latest_record_creation_date" length="19"/>
+        <property name="relationshipsCreated" type="java.lang.Integer" column="relationships_created"/>
+        <property name="personsCreated" type="java.lang.Integer" column="persons_created"/>
+        <property name="personsForObsCreated" type="java.lang.Integer" column="persons_for_obs_created"/>
+        <property name="obsCreated" type="java.lang.Integer" column="obs_created"/>
+        <property name="indexCasesInvolved" type="java.lang.Integer" column="index_cases_involved"/>
+
+
+        <many-to-one name="creator" class="org.openmrs.User" not-null="true">
+            <column name="creator"/>
+        </many-to-one>
+        <property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19"/>
+
+        <many-to-one name="changedBy" class="org.openmrs.User" column="changed_by"/>
+        <property name="dateChanged" type="java.util.Date" column="date_changed" length="19"/>
+
+        <many-to-one name="voidedBy" class="org.openmrs.User" column="voided_by"/>
+        <property name="dateVoided" type="java.util.Date" column="date_voided" length="19"/>
+        <property name="voidReason" type="java.lang.String" column="void_reason" length="255"/>
+        <property name="voided" type="boolean" column="voided" length="1" not-null="true"/>
+
+        <property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true"/>
+    </class>
+</hibernate-mapping>

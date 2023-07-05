@@ -20,6 +20,7 @@ public class MasterCardRecordMappingLog extends BaseOpenmrsData {
     private boolean personObsWasCreated;
     private Relationship relationship;
     private MasterCardRecordMappingExecutionCycle executionCycle;
+    private String migrationResult;
 
 
     public Integer getId() {
@@ -133,4 +134,12 @@ public class MasterCardRecordMappingLog extends BaseOpenmrsData {
     public void setExecutionCycle(MasterCardRecordMappingExecutionCycle executionCycle) {
         this.executionCycle = executionCycle;
     }
+
+	public String getMigrationResult() {
+		return migrationResult;
+	}
+
+	public void setMigrationResult(String migrationResult) {
+		this.migrationResult = migrationResult;
+	}
 }

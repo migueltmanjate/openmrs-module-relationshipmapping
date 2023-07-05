@@ -153,8 +153,8 @@ public class MasterCardPersonGenerator {
 						// Do nothing. The relationship already exists
 						// ToDo: How about obs? Update them if mastercard is newer and has different
 						// value?
-//                        log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
-//                                "] and contact person ["+contacts.get(0).getId()+"]");
+                        log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+                                "] and contact person ["+contacts.get(0).getId()+"]");
 					}
 				} else {
 					// Patient with the NID in the mastercard record could not be uniquely
@@ -179,8 +179,8 @@ public class MasterCardPersonGenerator {
 						// Do nothing. The relationship already exists
 						// ToDo: How about obs? Update them if mastercard is newer and has different
 						// value?
-//                        log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
-//                                "] and contact person ["+contactPerson.getPersonId()+"]");
+                        log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+                                "] and contact person ["+contactPerson.getPersonId()+"]");
 					}
 				}
 			} else {
@@ -204,8 +204,8 @@ public class MasterCardPersonGenerator {
 					// Do nothing. The relationship already exists
 					// ToDo: How about obs? Update them if mastercard is newer and has different
 					// value?
-//                    log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
-//                            "] and contact person ["+contactPerson.getPersonId()+"]");
+                    log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+                            "] and contact person ["+contactPerson.getPersonId()+"]");
 				}
 			}
 		}

@@ -43,6 +43,7 @@
         <many-to-one name="executionCycle" class="org.openmrs.module.relationshipmapping.model.MasterCardRecordMappingExecutionCycle" not-null="true">
             <column name="execution_cycle"/>
         </many-to-one>
+        <property name="migrationResult" type="java.lang.String" column="migration_result"/>
 
         <many-to-one name="creator" class="org.openmrs.User" not-null="true">
             <column name="creator"/>

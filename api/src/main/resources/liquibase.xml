@@ -59,6 +59,7 @@
             <column name="execution_cycle" type="int">
                 <constraints nullable="false"/>
             </column>
+             <column name="migration_result" type="text" />
 
             <column name="creator" valueNumeric="1" type="int"/>
             <column name="date_created" type="datetime"/>

@@ -59,7 +59,6 @@
             <column name="execution_cycle" type="int">
                 <constraints nullable="false"/>
             </column>
-             <column name="migration_result" type="text" />
 
             <column name="creator" valueNumeric="1" type="int"/>
             <column name="date_created" type="datetime"/>
@@ -174,5 +173,40 @@
         <addColumn tableName="mastercard_relationship_mapping_cycle">
             <column name="latest_record_creation_date" type="datetime" />
         </addColumn>
+    </changeSet>
+    <changeSet id="relationshipmapping-202307060905"  author="jritsure" context="rel3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="mastercard_relationship_mapping_log" columnName="migration_result"/>
+            </not>
+        </preConditions>
+        <comment>
+            Adding the migration_result column to mastercard_relationship_mapping_log
+        </comment>
+        <addColumn tableName="mastercard_relationship_mapping_log">
+            <column name="migration_result" type="text" />
+        </addColumn>
+    </changeSet>
+    <changeSet id="relationshipmapping-202307060915"  author="jritsure" context="rel3">
+        <preConditions>
+                <columnExists tableName="mastercard_relationship_mapping_log" columnName="relationship"/>
+        </preConditions>
+        <comment>
+            Updating constraint of column relationship from mastercard_relationship_mapping_log
+        </comment>
+        <dropNotNullConstraint tableName="mastercard_relationship_mapping_log" columnName="relationship" columnDataType="int" />
+    </changeSet>
+    <changeSet id="relationshipmapping-202307060910"  author="jritsure" context="rel3">
+        <preConditions>
+                <columnExists tableName="mastercard_relationship_mapping_log" columnName="contact_person"/>
+        </preConditions>
+        <comment>
+            Updating constraint of column contact_person from mastercard_relationship_mapping_log
+        </comment>
+        <dropForeignKeyConstraint baseTableName="mastercard_relationship_mapping_log" constraintName="mastercard_mapping_contact_person"/>
+        <dropNotNullConstraint tableName="mastercard_relationship_mapping_log" columnName="contact_person" columnDataType="int" />
+        <addForeignKeyConstraint constraintName="mastercard_mapping_contact_person"
+                                 baseTableName="mastercard_relationship_mapping_log" baseColumnNames="contact_person"
+                                 referencedTableName="person" referencedColumnNames="person_id"/>
     </changeSet>
 </databaseChangeLog>

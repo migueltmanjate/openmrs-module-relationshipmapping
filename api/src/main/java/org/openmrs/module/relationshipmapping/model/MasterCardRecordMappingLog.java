@@ -142,4 +142,15 @@ public class MasterCardRecordMappingLog extends BaseOpenmrsData {
 	public void setMigrationResult(String migrationResult) {
 		this.migrationResult = migrationResult;
 	}
+
+	@Override
+	public String toString() {
+		return "MasterCardRecordMappingLog [id=" + id + ", hivCareObsId=" + hivCareObsId + ", hivTestObsId="
+				+ hivTestObsId + ", contactNidObsId=" + contactNidObsId + ", childAtRiskTreatmentObsId="
+				+ childAtRiskTreatmentObsId + ", contactNameObsId=" + contactNameObsId + ", contactAgeObsId="
+				+ contactAgeObsId + ", relationshipObsId=" + relationshipObsId + ", contactPerson=" + contactPerson
+				+ ", indexPatient=" + indexPatient + ", contactPersonWasCreated=" + contactPersonWasCreated
+				+ ", personObsWasCreated=" + personObsWasCreated + ", relationship=" + relationship
+				+ ", executionCycle=" + executionCycle + ", migrationResult=" + migrationResult + "]";
+	}
 }

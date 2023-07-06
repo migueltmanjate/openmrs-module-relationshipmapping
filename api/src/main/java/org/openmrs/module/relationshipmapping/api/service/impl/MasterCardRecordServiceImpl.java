@@ -43,6 +43,7 @@ public class MasterCardRecordServiceImpl extends BaseOpenmrsService implements M
 		return isTaskRunning;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void processUnmappedMastercardRecords() {
 		if (isTaskRunning) {
 			return;
@@ -54,36 +55,33 @@ public class MasterCardRecordServiceImpl extends BaseOpenmrsService implements M
 			MasterCardRecordMappingExecutionCycle executionCycle = new MasterCardRecordMappingExecutionCycle();
 
 			List<MasterCardObsGroup> groups = masterCardRecordDao.getNewMasterCardObsGroups();
-            log.info("Mastercard Relationship mapping found ["+groups.size()+"] groups.");
+			log.info("Mastercard Relationship mapping found [" + groups.size() + "] groups.");
+			executionCycle.setQueryEndTime(new Date());
+			masterCardRecordMappingLogDao.saveExecutionCycle(executionCycle);
 			if (groups != null && groups.size() > 0) {
 				Collections.sort(groups);
-				masterCardRecordMappingLogDao.saveExecutionCycle(executionCycle);
-
-				List<MasterCardPersonGenerator> masterCardPersonGenerators = new ArrayList<MasterCardPersonGenerator>();
-
 				for (MasterCardObsGroup masterCardObsGroup : groups) {
-					masterCardPersonGenerators
-							.add(new MasterCardPersonGenerator(masterCardObsGroup, masterCardRecordDao));
-				}
-
-				for (MasterCardPersonGenerator masterCardPersonGenerator : masterCardPersonGenerators) {
+					MasterCardPersonGenerator masterCardPersonGenerator = new MasterCardPersonGenerator(
+							masterCardObsGroup, masterCardRecordDao);
 					MasterCardRecordMappingLog masterCardRecordMappingLog = new MasterCardRecordMappingLog();
 					masterCardRecordMappingLog.setExecutionCycle(executionCycle);
 					try {
 						masterCardRecordMappingLog = masterCardPersonGenerator.migrate(executionCycle);
 					} catch (Exception e) {
-						masterCardRecordMappingLog
-								.setMigrationResult("An error occurred during the migration process: " + e.getMessage());
+						masterCardRecordMappingLog.setMigrationResult(
+								"An error occurred during the migration process: " + e.getMessage());
 					} finally {
 						masterCardRecordMappingLogDao.save(masterCardRecordMappingLog);
-						this.processUnmappedMastercardRecords();
 					}
 				}
-            log.info("Mastercard Relationship mapping: Completed Relationship mapping session: "+executionCycle.toString());
+
+				log.info("Mastercard Relationship mapping: Completed Relationship mapping session: "
+						+ executionCycle.toString());
+				this.processUnmappedMastercardRecords();
 			}
-			executionCycle.setQueryEndTime(new Date());
-			masterCardRecordMappingLogDao.saveExecutionCycle(executionCycle);
 			log.info("Mastercard Relationship mapping task finished.");
+		} catch (Exception e) {
+			log.info("An error occurred while performing the mapping of relationships. " + e.getMessage());
 		} finally {
 			isTaskRunning = false;
 		}

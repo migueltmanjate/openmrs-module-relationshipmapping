@@ -29,7 +29,7 @@
         <property name="relationshipObsId" type="java.lang.Integer">
             <column name="relationship_obs" />
         </property>
-        <many-to-one name="contactPerson" class="org.openmrs.Person" not-null="true">
+        <many-to-one name="contactPerson" class="org.openmrs.Person">
             <column name="contact_person"/>
         </many-to-one>
         <many-to-one name="indexPatient" class="org.openmrs.Patient" not-null="true">
@@ -37,7 +37,7 @@
         </many-to-one>
         <property name="contactPersonWasCreated" type="java.lang.Boolean" column="contact_person_was_created"/>
         <property name="personObsWasCreated" type="java.lang.Boolean" column="person_obs_was_created"/>
-        <many-to-one name="relationship" class="org.openmrs.Relationship" not-null="true">
+        <many-to-one name="relationship" class="org.openmrs.Relationship">
             <column name="relationship"/>
         </many-to-one>
         <many-to-one name="executionCycle" class="org.openmrs.module.relationshipmapping.model.MasterCardRecordMappingExecutionCycle" not-null="true">

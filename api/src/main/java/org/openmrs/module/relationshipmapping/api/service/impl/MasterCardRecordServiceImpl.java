@@ -67,6 +67,8 @@ public class MasterCardRecordServiceImpl extends BaseOpenmrsService implements M
 					masterCardRecordMappingLog.setExecutionCycle(executionCycle);
 					try {
 						masterCardRecordMappingLog = masterCardPersonGenerator.migrate(executionCycle);
+						masterCardRecordMappingLog.setMigrationResult(
+								"Migration process executed successfully.");
 					} catch (Exception e) {
 						masterCardRecordMappingLog.setMigrationResult(
 								"An error occurred during the migration process: " + e.getMessage());

@@ -1,16 +1,14 @@
 package org.openmrs.module.relationshipmapping.api.db.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
+import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.relationshipmapping.api.db.MasterCardRecordDao;
 import org.openmrs.module.relationshipmapping.model.MasterCardObsGroup;
-import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.relationshipmapping.model.MasterCardObsGroupMember;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 public class HibernateMasterCardRecordDao implements MasterCardRecordDao {
     protected DbSessionFactory sessionFactory;
@@ -20,8 +18,7 @@ public class HibernateMasterCardRecordDao implements MasterCardRecordDao {
     }
 
     @Transactional
-    public List<MasterCardObsGroup> getNewMasterCardObsGroups(final Date previousExecutionDate) {
-        String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(previousExecutionDate);
+    public List<MasterCardObsGroup> getNewMasterCardObsGroups() {
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
                 "SELECT obsGrupo.obs_id as obsId,obsGrupo.obs_datetime as obsDateTime,obsGrupo.person_id as indexCaseId,obsGrupo.date_created as creationDate   " +
                         " FROM obs obsGrupo  " +

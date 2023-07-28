@@ -88,7 +88,7 @@ public class MasterCardPersonGenerator {
 			} else if (conceptId == 23778) {
 				masterCardRecord.setName(member.getValueText());
 				masterCardRecordMappingLog.setContactNameObsId(member.getObsId());
-			} else if (conceptId == 5622) {
+			} else if (conceptId == 5622 && masterCardRecord.getRelationshipTypeConceptId() <= 0) {
 				if (StringUtils.equalsIgnoreCase(member.getValueText(), "FIlha")
 						|| StringUtils.equalsIgnoreCase(member.getValueText(), "FIlho")) {
 					masterCardRecord.setRelationshipTypeConceptId(23707);
@@ -153,6 +153,8 @@ public class MasterCardPersonGenerator {
 						// Do nothing. The relationship already exists
 						// ToDo: How about obs? Update them if mastercard is newer and has different
 						// value?
+						masterCardRecordMappingLog.setMigrationResult("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+								"] and contact person ["+contacts.get(0).getId()+"]");
                         log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
                                 "] and contact person ["+contacts.get(0).getId()+"]");
 					}
@@ -179,6 +181,8 @@ public class MasterCardPersonGenerator {
 						// Do nothing. The relationship already exists
 						// ToDo: How about obs? Update them if mastercard is newer and has different
 						// value?
+						masterCardRecordMappingLog.setMigrationResult("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+								"] and contact person ["+contactPerson.getPersonId()+"]");
                         log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
                                 "] and contact person ["+contactPerson.getPersonId()+"]");
 					}
@@ -204,6 +208,8 @@ public class MasterCardPersonGenerator {
 					// Do nothing. The relationship already exists
 					// ToDo: How about obs? Update them if mastercard is newer and has different
 					// value?
+					masterCardRecordMappingLog.setMigrationResult("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
+							"] and contact person ["+contactPerson.getPersonId()+"]");
                     log.info("Mastercard Relationship mapping: Relationship already exists between index case ["+masterCardRecord.getIndexPatient().getId()+
                             "] and contact person ["+contactPerson.getPersonId()+"]");
 				}
@@ -215,7 +221,8 @@ public class MasterCardPersonGenerator {
 		executionCycle.setIndexCasesInvolved(indexCasesInvolved.size());
 		executionCycle.setPersonsForObsCreated(personsForObsCreated.size());
 		executionCycle.setLatestRecordCreationDate(this.masterCardObsGroup.getCreationDate());
-		
+
+
 		return masterCardRecordMappingLog;
 
 	}

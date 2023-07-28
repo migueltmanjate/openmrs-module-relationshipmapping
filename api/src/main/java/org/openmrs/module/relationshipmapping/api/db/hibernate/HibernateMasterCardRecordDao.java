@@ -22,10 +22,10 @@ public class HibernateMasterCardRecordDao implements MasterCardRecordDao {
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
                 "SELECT obsGrupo.obs_id as obsId,obsGrupo.obs_datetime as obsDateTime,obsGrupo.person_id as indexCaseId,obsGrupo.date_created as creationDate   " +
                         " FROM obs obsGrupo  " +
-                        "       INNER JOIN obs b ON obsGrupo.person_id=b.person_id  " +
+                        "       INNER JOIN obs b ON obsGrupo.person_id=b.person_id and b.voided=0  " +
                         "       INNER JOIN person p ON p.person_id = obsGrupo.person_id  " +
                         "       inner join encounter e on obsGrupo.encounter_id =e.encounter_id " +
-                        "       inner join obs c ON obsGrupo.person_id=c.person_id and c.concept_id = 23778 and c.obs_group_id = obsGrupo.obs_id  " +
+                        "       inner join obs c ON obsGrupo.person_id=c.person_id and c.concept_id = 23778 and c.obs_group_id = obsGrupo.obs_id and c.voided=0 " +
                         "       inner join obs obsParentesco on obsParentesco.obs_group_id=obsGrupo.obs_id and obsParentesco.concept_id=23704 and obsParentesco.value_coded in (23707,971,970,1921) and obsParentesco.voided=0  " +
                         "       left join obs obsIdade on  obsIdade.obs_group_id=obsGrupo.obs_id and obsIdade.concept_id=23777 and obsIdade.voided=0  " +
                         "       left join obs obsTeste on  obsTeste.obs_group_id=obsGrupo.obs_id and obsTeste.concept_id=23779 and obsTeste.voided=0  " +

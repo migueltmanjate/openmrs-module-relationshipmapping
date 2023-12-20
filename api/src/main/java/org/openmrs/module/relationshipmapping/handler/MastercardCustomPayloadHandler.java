@@ -39,13 +39,13 @@ public class MastercardCustomPayloadHandler  implements QueueDataHandler {
         log.info("Processing demographics update form data: " + queueData.getUuid());
         try {
         if (validate(queueData)) {
-            for(Obs obs:obsToSave) {
+            /*for(Obs obs:obsToSave) {
                 Context.getObsService().saveObs(obs, "mastercard record update");
             }
             
             for(Obs obs:obsToVoid) {
                 Context.getObsService().voidObs(obs, "mastercard record update");
-            }
+            }*/
         }
     } catch (Exception e) {
         if (!e.getClass().equals(QueueProcessorException.class)) {

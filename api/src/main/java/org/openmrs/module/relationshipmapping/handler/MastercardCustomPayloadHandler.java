@@ -115,7 +115,7 @@ public class MastercardCustomPayloadHandler  implements QueueDataHandler {
                         if (StringUtils.isNotBlank(combinedNameString)) {
                             Obs obs = new Obs();
                             obs.setConcept(contactNameConcept);
-                            obs.setObsGroup(mastercardGroupObs);
+                            //obs.setObsGroup(mastercardGroupObs);
                             obs.setPerson(person);
                             obs.setValueText(combinedNameString);
                             obsToSave.add(obs);
@@ -136,7 +136,7 @@ public class MastercardCustomPayloadHandler  implements QueueDataHandler {
                                 Concept hivTestConcept = Context.getConceptService().getConcept(23779);
                                 Obs obs = new Obs();
                                 obs.setConcept(hivTestConcept);
-                                obs.setObsGroup(mastercardGroupObs);
+                                //obs.setObsGroup(mastercardGroupObs);
                                 obs.setPerson(person);
                                 obs.setValueCoded(valueCodedConcept);
                                 obsToSave.add(obs);
@@ -158,7 +158,7 @@ public class MastercardCustomPayloadHandler  implements QueueDataHandler {
                                 Concept hivCareConcept = Context.getConceptService().getConcept(23780);
                                 Obs obs = new Obs();
                                 obs.setConcept(hivCareConcept);
-                                obs.setObsGroup(mastercardGroupObs);
+                                //obs.setObsGroup(mastercardGroupObs);
                                 obs.setPerson(person);
                                 obs.setValueCoded(valueCodedConcept);
                                 obsToSave.add(obs);
@@ -180,7 +180,7 @@ public class MastercardCustomPayloadHandler  implements QueueDataHandler {
                                 Concept tratementoCCRConcept = Context.getConceptService().getConcept(1885);
                                 Obs obs = new Obs();
                                 obs.setConcept(tratementoCCRConcept);
-                                obs.setObsGroup(mastercardGroupObs);
+                                //obs.setObsGroup(mastercardGroupObs);
                                 obs.setPerson(person);
                                 obs.setValueCoded(valueCodedConcept);
                                 obsToSave.add(obs);

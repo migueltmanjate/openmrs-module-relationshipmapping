@@ -8,6 +8,8 @@ public class MasterCardObsGroup implements Comparable{
     private int indexCaseId;
     private Date creationDate;
 
+    private Date encounterDateTime;
+
     public int getObsId() {
         return obsId;
     }
@@ -40,6 +42,13 @@ public class MasterCardObsGroup implements Comparable{
         this.indexCaseId = indexCaseId;
     }
 
+    public Date getEncounterDateTime() {
+        return encounterDateTime;
+    }
+
+    public void setEncounterDateTime(Date encounterDateTime) {
+        this.encounterDateTime = encounterDateTime;
+    }
     @Override
     public int compareTo(Object anotherGroup) {
         return getCreationDate().compareTo(((MasterCardObsGroup) anotherGroup).getCreationDate());

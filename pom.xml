@@ -24,7 +24,7 @@
 
     <properties>
 		<openMRSVersion>2.1.2</openMRSVersion>
-        <muzimaCoreVersion>2.3.0</muzimaCoreVersion>
+        <muzimaCoreVersion>2.7.0</muzimaCoreVersion>
 
     </properties>
 	<dependencyManagement>

@@ -3,11 +3,7 @@ package org.openmrs.module.relationshipmapping.model;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -73,6 +69,7 @@ public class MasterCardPersonGenerator {
 		MasterCardRecord masterCardRecord = new MasterCardRecord();
 		masterCardRecord.setIndexPatient(indexPatient);
 		masterCardRecord.setObsDateTime(this.masterCardObsGroup.getObsDateTime());
+		masterCardRecord.setEncounterDateTime(this.masterCardObsGroup.getEncounterDateTime());
 		List<MasterCardObsGroupMember> members = masterCardRecordDao.getMasterCardObsGroupMembers(this.masterCardObsGroup.getObsId());
 		for (MasterCardObsGroupMember member : members) {
 			int conceptId = member.getConceptId();
@@ -395,10 +392,15 @@ public class MasterCardPersonGenerator {
 			MasterCardRecordMappingExecutionCycle executionCycle) {
 		Person person = new Person();
 		int age;
+		Date birthdate;
 
 		if (masterCardRecord.getAge() > 0 && masterCardRecord.getAge() <= 100) {
 			age = masterCardRecord.getAge();
+			birthdate = masterCardRecord.getEncounterDateTime();
+
 			Calendar birthdateCalendar = Calendar.getInstance();
+			birthdateCalendar.setTime(birthdate);
+
 			birthdateCalendar.setTime(masterCardRecord.getObsDateTime());
 			birthdateCalendar.add(Calendar.YEAR, -1 * age);
 			birthdateCalendar.set(Calendar.MONTH, 0);

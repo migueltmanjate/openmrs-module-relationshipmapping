@@ -20,7 +20,7 @@ public class HibernateMasterCardRecordDao implements MasterCardRecordDao {
     @Transactional
     public List<MasterCardObsGroup> getNewMasterCardObsGroups() {
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
-                "SELECT obsGrupo.obs_id as obsId,obsGrupo.obs_datetime as obsDateTime,obsGrupo.person_id as indexCaseId,obsGrupo.date_created as creationDate   " +
+                "SELECT obsGrupo.obs_id as obsId,obsGrupo.obs_datetime as obsDateTime,obsGrupo.person_id as indexCaseId,obsGrupo.date_created as creationDate, e.encounter_datetime as encounterDateTime " +
                         " FROM obs obsGrupo  " +
                         "       INNER JOIN obs b ON obsGrupo.person_id=b.person_id and b.voided=0  " +
                         "       INNER JOIN person p ON p.person_id = obsGrupo.person_id  " +

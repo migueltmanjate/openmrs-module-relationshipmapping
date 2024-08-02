@@ -16,6 +16,7 @@ public class MasterCardRecord {
     private Patient indexPatient;
     private Person contactPerson;
     private Date obsDateTime;
+    private Date encounterDateTime;
 
     public String getName() {
         return name;
@@ -95,5 +96,11 @@ public class MasterCardRecord {
 
     public Date getObsDateTime() {
         return obsDateTime;
+    }
+    public Date getEncounterDateTime() {
+        return encounterDateTime;
+    }
+    public void setEncounterDateTime(Date encounterDateTime) {
+        this.encounterDateTime = encounterDateTime;
     }
 }
